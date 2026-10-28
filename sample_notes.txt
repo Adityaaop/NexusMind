@@ -1,0 +1,9 @@
+# Notes: LLM Inference Architectures & Cloud GPU Providers (Oct 2026)
+
+## Key Observations:
+- Testing Llama-3.1-Nemotron-70B on serverless token endpoints vs running local 8B quantization on Apple Silicon M-series.
+- Latency findings: Local M-series tops out at ~15-22 tokens/sec for 8B models. For complex multi-step reasoning, 70B+ weights are needed to avoid hallucinating multi-step instructions.
+- Nebius Token Factory benchmarks: Serverless API achieves ~85-110 tokens/sec on Nemotron 70B, which is fast enough for interactive agent pipelines.
+- Security requirement: Raw project code and internal architecture specs cannot leave the local workstation. Solution is to extract and summarize local references in RAM before querying cloud inference.
+- Cost considerations: Serverless pay-per-token model on Nebius is significantly more cost-effective for bursty research sessions than paying hourly for dedicated H100/H200 instances.
+
